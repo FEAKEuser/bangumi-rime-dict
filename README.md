@@ -1,6 +1,6 @@
 # Bangumi Rime 词库
 
-适用于 Rime 输入法（小狼毫、雾凇拼音）的动漫、游戏相关词库。
+适用于 Rime 输入法（雾凇拼音、小狼毫）的动漫、游戏相关扩展词库。
 
 ## 包含内容
 
@@ -8,26 +8,33 @@
 - 英文工作室名、游戏名、标签
 - 约 21 万词条
 
+**注意**：本词库为扩展词库，不包含常用字词（如"的"、"是"等）。常用字词由基础词库（如雾凇拼音的 `rime_ice`）提供。
+
 ## 数据来源
 
 原始数据来自 [Bangumi Archive](https://github.com/bangumi/Archive)
 
-## 使用方法
+## 安装
 
-### 1. 下载词库
+### 方法一：直接下载
 
-下载最新的 `bangumi.dict.yaml` 文件。
-
-### 2. 安装
-
-复制 `bangumi.dict.yaml` 到 Rime 配置目录：
+下载最新的 `bangumi.dict.yaml` 文件，复制到 Rime 配置目录：
 - Windows: `%APPDATA%\Rime\`
 - macOS: `~/Library/Rime/`
 - Linux: `~/.config/ibus/rime/`
 
-### 3. 配置
+### 方法二：克隆仓库
 
-在 `rime_ice.custom.yaml`（雾凇拼音）中添加：
+```bash
+git clone https://github.com/FEAKEuser/bangumi-rime-dict.git
+cp bangumi-rime-dict/bangumi.dict.yaml ~/.config/ibus/rime/
+```
+
+## 配置
+
+### 雾凇拼音 (rime_ice)
+
+在 `rime_ice.custom.yaml` 中添加：
 
 ```yaml
 patch:
@@ -36,7 +43,9 @@ patch:
   translator/enable_user_dict: true
 ```
 
-或者在 `luna_pinyin.custom.yaml`（小狼毫默认）中添加：
+### 小狼毫默认方案 (luna_pinyin)
+
+在 `luna_pinyin.custom.yaml` 中添加：
 
 ```yaml
 patch:
@@ -44,7 +53,7 @@ patch:
   translator/user_dict: bangumi
 ```
 
-### 4. 重新部署
+## 重新部署
 
 右键任务栏输入法图标 → 重新部署
 
@@ -54,22 +63,15 @@ patch:
 词语    拼音    权重
 ```
 
-示例：
-```
-命运石之门    mingyunshizhimen    6933
-Fate    fate    81186
-Galgame    galgame    480191
-```
+权重参考雾凇拼音标准，范围 1-25000。
 
 ## 重新生成词库
 
-如果需要从原始数据重新生成词库，运行：
-
 ```bash
 pip install pypinyin opencc
-python convert_to_rime_v4.py
+python convert_to_rime_final.py
 ```
 
 ## 更新日志
 
-- 2026-02-28: 初始版本，约 21 万词条
+- 2026-02-28: 初始版本，约 21 万词条，权重适配雾凇拼音标准
