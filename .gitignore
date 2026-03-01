@@ -22,4 +22,19 @@ Thumbs.db
 
 # Large data files (source data from Bangumi)
 *.jsonlines
+
+# Intermediate files
 bangumi_dict.txt
+bangumi_backup.dict.yaml
+names_*.txt
+untranslated_names.txt
+jp_cn_translations.txt
+common_jp_names.txt
+japanese_surnames.txt
+
+# Old conversion scripts
+convert_to_rime.py
+convert_to_rime_v2.py
+convert_to_rime_v3.py
+convert_to_rime_v4.py
+convert_to_rime_pinyin.py
